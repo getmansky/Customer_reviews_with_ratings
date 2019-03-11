@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 using CustomerReviews.Core.Model;
 using VirtoCommerce.Platform.Core.Common;
@@ -29,6 +29,7 @@ namespace CustomerReviews.Data.Model
 
             rating.AuthorNickname = AuthorNickname;
             rating.Rating = Rating;
+            rating.ReviewId = ReviewId;
 
             return rating;
         }
@@ -43,6 +44,7 @@ namespace CustomerReviews.Data.Model
             CreatedDate = rating.CreatedDate;
             ModifiedBy = rating.ModifiedBy;
             ModifiedDate = rating.ModifiedDate;
+            ReviewId = rating.ReviewId;
 
             AuthorNickname = rating.AuthorNickname;
             Rating = rating.Rating;

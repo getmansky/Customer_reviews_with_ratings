@@ -5,7 +5,7 @@ angular.module('CustomerReviews.Web')
         update: { method: 'PUT' },
         getRatings: {
             method: 'GET',
-            url: 'api/customerReviews/getReviewRatings'
+            url: 'api/customerReviews/getReviewRatings/:id'
         }
     });
 }]);

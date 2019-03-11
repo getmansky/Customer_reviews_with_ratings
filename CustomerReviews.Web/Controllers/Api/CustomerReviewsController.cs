@@ -79,9 +79,9 @@ namespace CustomerReviews.Web.Controllers.Api
         }
 
         [HttpGet]
-        [Route("getreviewratings")]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult GetReviewRating(string id)
+        [Route("getreviewratings/{id}")]
+        [ResponseType(typeof(GenericSearchResult<CustomerReviewRating>))]
+        public IHttpActionResult GetReviewRatings(string id)
         {
             var ratings = _customerReviewService.GetRatings(id);
             return Ok(ratings);

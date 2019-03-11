@@ -1,4 +1,4 @@
-﻿using VirtoCommerce.Platform.Core.Common;
+using VirtoCommerce.Platform.Core.Common;
 
 namespace CustomerReviews.Core.Model
 {
@@ -6,5 +6,6 @@ namespace CustomerReviews.Core.Model
     {
         public int Rating { get; set; }
         public string AuthorNickname { get; set; }
+        public string ReviewId { get; set; }
     }
 }

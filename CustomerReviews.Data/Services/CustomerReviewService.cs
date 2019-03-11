@@ -108,13 +108,16 @@ namespace CustomerReviews.Data.Services
             {
                 var ratings = repository.GetByIds(new string[] { id })
                     .FirstOrDefault()
-                    .Ratings
+                    ?.Ratings
                     .Select(r => r.ToModel(new CustomerReviewRating()))
                     .ToList();
 
                 var result = new GenericSearchResult<CustomerReviewRating>();
-                result.TotalCount = ratings.Count;
-                result.Results = ratings;
+                if (ratings != null)
+                {
+                    result.TotalCount = ratings.Count;
+                    result.Results = ratings;
+                }
 
                 return result;
             }

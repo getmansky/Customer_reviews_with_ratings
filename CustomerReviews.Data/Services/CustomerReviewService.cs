@@ -69,17 +69,17 @@ namespace CustomerReviews.Data.Services
         }
 
         // TODO: Remove first argument
-        public void Rate(string reviewId, CustomerReviewRating rating)
+        public void SaveCustomerReviewRates(CustomerReviewRating rating)
         {
-            if (reviewId == null)
-                throw new ArgumentNullException(nameof(reviewId));
+            if (rating == null)
+                throw new ArgumentNullException(nameof(rating));
 
             using (var repository = _repositoryFactory())
             {
-                var review = repository.GetByIds(new string[] { reviewId }).FirstOrDefault();
+                var review = repository.GetByIds(new string[] { rating.ReviewId }).FirstOrDefault();
 
                 if (review == null)
-                    throw new ArgumentException(nameof(reviewId));
+                    throw new ArgumentException(nameof(rating.ReviewId));
 
                 var pkMap = new PrimaryKeyResolvingMap();
 

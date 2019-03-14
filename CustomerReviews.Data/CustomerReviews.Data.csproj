@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201903031414057_Ratings.Designer.cs">
       <DependentUpon>201903031414057_Ratings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903141227416_ProductRatingRename.cs" />
+    <Compile Include="Migrations\201903141227416_ProductRatingRename.Designer.cs">
+      <DependentUpon>201903141227416_ProductRatingRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CustomerReviewEntity.cs" />
     <Compile Include="Model\CustomerReviewRatingEntity.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903031414057_Ratings.resx">
       <DependentUpon>201903031414057_Ratings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903141227416_ProductRatingRename.resx">
+      <DependentUpon>201903141227416_ProductRatingRename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

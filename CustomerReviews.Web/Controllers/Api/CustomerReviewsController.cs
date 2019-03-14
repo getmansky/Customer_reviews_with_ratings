@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -38,6 +39,21 @@ namespace CustomerReviews.Web.Controllers.Api
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("average/{productId}")]
+        [ResponseType(typeof(GenericSearchResult<decimal>))]
+        [CheckPermission(Permission = PredefinedPermissions.CustomerReviewRead)]
+        public IHttpActionResult GetAverageProductRating(string productId)
+        {
+            var rating = _customerReviewSearchService.GetProductAverageRating(productId);
+            
+            return Ok(new GenericSearchResult<decimal>()
+            {
+                Results = new[] { rating },
+                TotalCount = 1
+            });
+        }
+
         /// <summary>
         ///  Create new or update existing customer review
         /// </summary>
@@ -72,9 +88,9 @@ namespace CustomerReviews.Web.Controllers.Api
         [Route("rate")]
         [ResponseType(typeof(void))]
         [CheckPermission(Permission = PredefinedPermissions.CustomerReviewRate)]
-        public IHttpActionResult Rate(string reviewId, CustomerReviewRating rating)
+        public IHttpActionResult Rate(CustomerReviewRating rating)
         {
-            _customerReviewService.Rate(reviewId, rating);
+            _customerReviewService.SaveCustomerReviewRates(rating);
             return StatusCode(HttpStatusCode.NoContent);
         }
 

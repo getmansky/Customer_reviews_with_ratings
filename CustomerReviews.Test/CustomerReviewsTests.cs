@@ -75,9 +75,9 @@ namespace CustomerReviews.Test
                 ReviewId = CustomerReviewId
             };
 
-            Assert.Throws<ArgumentNullException>(() => CustomerReviewService.Rate(null, rating));
+            Assert.Throws<ArgumentNullException>(() => CustomerReviewService.SaveCustomerReviewRates(null));
 
-            CustomerReviewService.Rate(CustomerReviewId, rating);
+            CustomerReviewService.SaveCustomerReviewRates(rating);
             var gotRating = CustomerReviewService.GetRatings(CustomerReviewId);
 
             Assert.Equal(1, gotRating.TotalCount);

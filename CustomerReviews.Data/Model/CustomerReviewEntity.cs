@@ -21,7 +21,7 @@ namespace CustomerReviews.Data.Model
         public string ProductId { get; set; }
 
         [Range(0, 5)]
-        public int Rating { get; set; }
+        public int ProductRating { get; set; }
 
         #region Navagatin Properties
         public virtual ObservableCollection<CustomerReviewRatingEntity> Ratings { get; set; }
@@ -42,7 +42,7 @@ namespace CustomerReviews.Data.Model
             customerReview.Content = Content;
             customerReview.IsActive = IsActive;
             customerReview.ProductId = ProductId;
-            customerReview.Rating = Rating;
+            customerReview.Rating = ProductRating;
 
             return customerReview;
         }
@@ -64,7 +64,7 @@ namespace CustomerReviews.Data.Model
             Content = customerReview.Content;
             IsActive = customerReview.IsActive;
             ProductId = customerReview.ProductId;
-            Rating = customerReview.Rating;
+            ProductRating = customerReview.Rating;
 
             return this;
         }
@@ -78,7 +78,7 @@ namespace CustomerReviews.Data.Model
             target.Content = Content;
             target.IsActive = IsActive;
             target.ProductId = ProductId;
-            target.Rating = Rating;
+            target.ProductRating = ProductRating;
         }
     }
 }

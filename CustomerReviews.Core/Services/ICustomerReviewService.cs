@@ -11,7 +11,7 @@ namespace CustomerReviews.Core.Services
 
         void DeleteCustomerReviews(string[] ids);
 
-        void Rate(string reviewId, CustomerReviewRating rating);
+        void SaveCustomerReviewRates(CustomerReviewRating rating);
 
         GenericSearchResult<CustomerReviewRating> GetRatings(string id);
     }

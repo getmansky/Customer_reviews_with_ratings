@@ -23,18 +23,6 @@ angular.module('CustomerReviews.Web')
                 $scope.selectedNodeId = data.id;
 
                 console.log(data);
-
-                //var newBlade = {
-                //    id: 'reviewDetails',
-                //    currentEntityId: data.id,
-                //    currentEntity: data,
-                //    title: data.name,
-                //    //controller: 'virtoCommerce.storeModule.storeDetailController',
-                //    controller: 'CustomerReviews.Web.reviewsListController',
-                //    //template: 'Modules/$(VirtoCommerce.Store)/Scripts/blades/store-detail.tpl.html'
-                //    template: 'Modules/$(CustomerReviews.Web)/Scripts/blades/reviews-list.tpl.html'
-                //};
-                //bladeNavigationService.showBlade(newBlade, blade);
             }
 
             function openBladeNew() {
@@ -61,14 +49,6 @@ angular.module('CustomerReviews.Web')
                         return true;
                     }
                 },
-                //{
-                //    name: "platform.commands.add", icon: 'fa fa-plus',
-                //    executeMethod: openBladeNew,
-                //    canExecuteMethod: function () {
-                //        return true;
-                //    },
-                //    permission: 'store:create'
-                //}
             ];
 
             // simple and advanced filtering

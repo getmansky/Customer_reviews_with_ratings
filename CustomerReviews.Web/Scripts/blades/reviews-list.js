@@ -58,14 +58,6 @@ angular.module('CustomerReviews.Web')
                         return true;
                     }
                 },
-                //{
-                //    name: "platform.commands.add", icon: 'fa fa-plus',
-                //    executeMethod: openBladeNew,
-                //    canExecuteMethod: function () {
-                //        return true;
-                //    },
-                //    permission: 'store:create'
-                //}
             ];
 
             // simple and advanced filtering

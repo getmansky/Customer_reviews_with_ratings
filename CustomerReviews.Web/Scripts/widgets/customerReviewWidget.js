@@ -8,17 +8,16 @@ angular.module('CustomerReviews.Web')
             reviewsApi.search(filter, function (data) {
                 $scope.loading = false;
                 $scope.totalCount = data.totalCount;
-
-                var ratesAverage = 0;
-                if (data.totalCount !== 0) {
-                    data.results.forEach(function (element) {
-                        ratesAverage += element.rating;
-                    });
-                    ratesAverage = ratesAverage * 1.0 / data.totalCount;
-                    $scope.reviewsAny = true;
-                }
-                $scope.ratesAverage = ratesAverage;
             });
+
+            if ($scope.totalCount != 0) {
+                reviewsApi.average(angular.extend({
+                    id: blade.currentEntityId
+                }), function (data) {
+                    $scope.ratesAverage = data.results[0];
+                    });
+                $scope.reviewsAny = true;
+            }
         }
 
         $scope.openBlade = function () {

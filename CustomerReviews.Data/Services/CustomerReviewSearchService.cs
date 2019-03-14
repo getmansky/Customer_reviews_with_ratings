@@ -67,5 +67,22 @@ namespace CustomerReviews.Data.Services
                 return retVal;
             }
         }
+
+        public decimal GetProductAverageRating(string id)
+        {
+            var criteria = new CustomerReviewSearchCriteria
+            {
+                ProductIds = new[] { id }
+            };
+
+            var reviews = SearchCustomerReviews(criteria);
+
+            var sum = 0m;
+            foreach (var review in reviews.Results)
+            {
+                sum += review.Rating;
+            }
+            return Math.Round(sum / reviews.TotalCount, 1, MidpointRounding.AwayFromZero);
+        }
     }
 }

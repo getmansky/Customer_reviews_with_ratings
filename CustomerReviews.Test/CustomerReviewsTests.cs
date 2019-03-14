@@ -16,9 +16,11 @@ namespace CustomerReviews.Test
     {
         private const string ProductId = "testProductId";
         private const string CustomerReviewId = "testId";
+        private const string ReviewRatingId = "testRateId";
 
         public CustomerReviewsTests()
         {
+            // TODO Do not use real database. Use InMemoryDb instead.
             ConnectionString = "VirtoCommerce";
         }
 
@@ -38,7 +40,8 @@ namespace CustomerReviews.Test
                 CreatedDate = DateTime.Now,
                 CreatedBy = "initial data seed",
                 AuthorNickname = "John Doe",
-                Content = "Liked that"
+                Content = "Liked that",
+                Rating = 4
             };
 
             CustomerReviewService.SaveCustomerReviews(new[] { item });
@@ -60,6 +63,25 @@ namespace CustomerReviews.Test
 
             item = getByIdsResult[0];
             Assert.Equal(updatedContent, item.Content);
+
+            // Rate
+            var rating = new CustomerReviewRating
+            {
+                Rating = 4,
+                AuthorNickname = "john",
+                CreatedBy = "initial data seed",
+                CreatedDate = DateTime.Now,
+                Id = ReviewRatingId,
+                ReviewId = CustomerReviewId
+            };
+
+            Assert.Throws<ArgumentNullException>(() => CustomerReviewService.Rate(null, rating));
+
+            CustomerReviewService.Rate(CustomerReviewId, rating);
+            var gotRating = CustomerReviewService.GetRatings(CustomerReviewId);
+
+            Assert.Equal(1, gotRating.TotalCount);
+            Assert.Single(gotRating.Results);
 
             // Search
             Assert.Throws<ArgumentNullException>(() => CustomerReviewSearchService.SearchCustomerReviews(null));

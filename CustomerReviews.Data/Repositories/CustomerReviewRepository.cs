@@ -34,6 +34,10 @@ namespace CustomerReviews.Data.Repositories
             var items = GetByIds(ids);
             foreach (var item in items)
             {
+                foreach (var rating in item.Ratings.ToList())
+                {
+                    Remove(rating);
+                }
                 Remove(item);
             }
         }

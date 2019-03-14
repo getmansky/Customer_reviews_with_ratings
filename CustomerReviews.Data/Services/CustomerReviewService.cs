@@ -68,6 +68,7 @@ namespace CustomerReviews.Data.Services
             }
         }
 
+        // TODO: Remove first argument
         public void Rate(string reviewId, CustomerReviewRating rating)
         {
             if (reviewId == null)
